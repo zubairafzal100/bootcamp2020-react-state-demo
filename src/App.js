@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SetCounter from './setCounter.js';
+import BulbImg from './Images/bulb.png'
 import './App.css';
 
 function App() {
+
+  let [counter, setCounter] = useState(0)
+  let [isBulb, setBulb] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={` ${isBulb ? 'bulb-off' : ''}`}>
+
+      <div className="App" >
+
+        <SetCounter Count={counter} />
+
+        <button className="count-btn" onClick={() => setCounter(counter + 1)}>
+          Update Counter Value
+      </button> <br />
+
+        <img className="bulb" src={BulbImg} alt={"Bulb Pic"} />
+
+        <button className="bulb-btn" onClick={() => setBulb(!isBulb)}>
+          Switch
+      </button>
+
+      </div>
+
     </div>
   );
 }
